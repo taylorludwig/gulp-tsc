@@ -3,7 +3,7 @@ var gutil = require('gulp-util');
 var sequence = require('run-sequence');
 var glob = require('glob');
 var es = require('event-stream');
-var clean = require('gulp-clean');
+var del = require('del');
 var typescript = require('../index');
 var expectFile = require('gulp-expect-file');
 
@@ -16,9 +16,11 @@ var ignore = function (err) { };
 
 gulp.task('default', ['all']);
 
-gulp.task('clean', function () {
-  return gulp.src('{build,src-inplace/**/*.js}', { read: false })
-    .pipe(clean());
+gulp.task('clean', function (cb) {
+    del([
+        'build',
+        'src-inplace/**/*.js',
+    ], cb);
 });
 
 gulp.task('all', ['clean'], function (cb) {
@@ -160,7 +162,7 @@ gulp.task('test13', ['clean'], function () {
       'build/test13/unified.js':     true,
       'build/test13/unified.js.map': [
         '"sourceRoot":"/"',
-        /"sources":\[("(proj-b\/util\.ts|proj-b\/sub\/sub\.ts|proj-a\/main\.ts)",?){3}\]/
+        /"sources":\[("(proj-b\/util\.ts|proj-b\/sub\/sub\.ts|proj-a\/\/main\.ts)",?){3}\]/
       ]
     }))
 });
@@ -254,7 +256,7 @@ gulp.task('test19', ['clean'], function () {
     .pipe(gulp.dest('build/test19'))
     .pipe(expect({
       'build/test19/test19.js':     true,
-      'build/test19/test19.js.map': /"sources":\[("..\/..\/src-inplace\/sub\/sub[12].ts",?){2}\]/
+      'build/test19/test19.js.map': /"sources":\[("..\/..\/src-inplace\/sub\/sub[12].ts",?){2,3}\]/
     }))
 });
 
