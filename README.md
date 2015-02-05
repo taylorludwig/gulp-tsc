@@ -121,11 +121,21 @@ Generated `.d.ts` file is also piped into the stream.
 
 **Notice**: If your output files are NOT going to `{working directory}/something/` (to a directory beneath the working directory), you have to tell your output path to gulp-tsc by `outDir` option for correct reference paths. See [Path modification](#path-modification) for details.
 
+#### options.noEmitOnError
+Type: `Boolean`
+Default: `false`
+
+`--noImplicitAny` option for `tsc` command.
+
+Do not emit outputs if any type checking errors were reported.
+
 #### options.noImplicitAny
 Type: `Boolean`
 Default: `false`
 
 `--noImplicitAny` option for `tsc` command.
+
+Warn on expressions and declarations with an implied 'any' type.
 
 #### options.noResolve
 Type: `Boolean`
@@ -133,11 +143,21 @@ Default: `false`
 
 `--noResolve` option for `tsc` command.
 
+#### options.preserveConstEnums
+Type: `Boolean`
+Default: `false`
+
+`--preserveConstEnums` option for `tsc` command.
+
+Do not erase const enum declarations in generated code.
+
 #### options.removeComments
 Type: `Boolean`
 Default: `false`
 
 `--removeComments` option for `tsc` command.
+
+Do not emit comments to output.
 
 #### options.sourcemap
 Type: `Boolean`
@@ -148,6 +168,14 @@ Default: `false`
 Generated `.js.map` file is also piped into the stream.
 
 **Notice**: If your output files are NOT going to `{working directory}/something/` (to a directory beneath the working directory), you have to tell your output path to gulp-tsc by `outDir` option or `sourceRoot` option. See [Path modification](#path-modification) for details.
+
+#### options.suppressImplicitAnyIndexErrors
+Type: `Boolean`
+Default: `false`
+
+`--suppressImplicitAnyIndexErrors` option for `tsc` command.
+
+Suppress noImplicitAny errors for indexing objects lacking index signatures.
 
 #### options.tmpDir
 Type: `String`
