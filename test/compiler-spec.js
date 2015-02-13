@@ -45,9 +45,7 @@ describe('Compiler', function () {
         tsc.exec.calledOnce.should.be.true;
         var args = tsc.exec.args[0];
         args[0].should.eql([
-          '--module', 'commonjs',
-          '--target', 'ES3',
-          '--outDir', compiler.tempDestination
+          '@' + compiler.tscArgumentsFile
         ]);
 
         done();

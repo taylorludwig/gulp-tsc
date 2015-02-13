@@ -162,7 +162,7 @@ gulp.task('test13', ['clean'], function () {
       'build/test13/unified.js':     true,
       'build/test13/unified.js.map': [
         '"sourceRoot":"/"',
-        /"sources":\[("(proj-b\/util\.ts|proj-b\/sub\/sub\.ts|proj-a\/\/main\.ts)",?){3}\]/
+        /"sources":\[("(proj-b\/util\.ts|proj-b\/sub\/sub\.ts|proj-a\/main\.ts)",?){3}\]/
       ]
     }))
 });
