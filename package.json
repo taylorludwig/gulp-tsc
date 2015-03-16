@@ -1,6 +1,6 @@
 {
   "name": "gulp-tsc",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "author": "Kota Saito <kotas.nico@gmail.com> (https://github.com/kotas)",
   "copyright": "2014 Kota Saito",
   "contributors": [
@@ -8,11 +8,11 @@
   ],
   "description": "TypeScript compiler for gulp.js",
   "license": "MIT",
-  "homepage": "https://github.com/kotas/gulp-tsc/",
-  "bugs": "https://github.com/kotas/gulp-tsc/issues",
+  "homepage": "https://github.com/kant2002/gulp-tsc/",
+  "bugs": "https://github.com/kant2002/gulp-tsc/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/kotas/gulp-tsc.git"
+    "url": "https://github.com/kant2002/gulp-tsc.git"
   },
   "main": "index.js",
   "scripts": {
