@@ -6,7 +6,6 @@
   "contributors": [
     "Cai Lei (https://github.com/ccll)"
   ],
-  maintainers: 'Andrey Kuryudmov <kant2002@gmail.com>',
   "description": "TypeScript compiler for gulp.js",
   "license": "MIT",
   "homepage": "https://github.com/kant2002/gulp-tsc/",
