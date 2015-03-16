@@ -75,7 +75,8 @@ Default: `"ES3"`
 Type: `String`
 Default: `null`
 
-`--out` option for `tsc` command.
+`--out` option for `tsc` command, which will be the name of the output file.
+example: out: 'app.js'
 
 #### options.outDir
 Type: `String`
@@ -343,7 +344,7 @@ If you do not need to keep the structure, you can skip creating the temporary fi
 
 [npm-url]: https://npmjs.org/package/gulp-tsc
 [npm-image]: https://badge.fury.io/js/gulp-tsc.png
-[travis-url]: https://travis-ci.org/kotas/gulp-tsc
-[travis-image]: https://travis-ci.org/kotas/gulp-tsc.png?branch=master
-[daviddm-url]: https://david-dm.org/kotas/gulp-tsc
-[daviddm-image]: https://david-dm.org/kotas/gulp-tsc.png?theme=shields.io
+[travis-url]: https://travis-ci.org/kant2002/gulp-tsc
+[travis-image]: https://travis-ci.org/kant2002/gulp-tsc.png?branch=master
+[daviddm-url]: https://david-dm.org/kant2002/gulp-tsc
+[daviddm-image]: https://david-dm.org/kant2002/gulp-tsc.png?theme=shields.io
