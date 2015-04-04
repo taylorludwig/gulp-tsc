@@ -21,6 +21,9 @@ gulp.task('compile', function(){
 });
 ```
 
+## Supported TSC versions
+All versions starting from 0.9.1, up to 1.5.0 Alpha.
+
 ## API
 
 ### typescript(options)
