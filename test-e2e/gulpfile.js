@@ -5,6 +5,7 @@ var glob = require('glob');
 var es = require('event-stream');
 var del = require('del');
 var typescript = require('../index');
+var tsc = require('../lib/tsc');
 var expectFile = require('gulp-expect-file');
 
 var expect = function (files) {
@@ -13,10 +14,19 @@ var expect = function (files) {
 
 var abort  = function (err) { throw err; };
 var ignore = function (err) { };
+var currentVersion = 'INVALID';
 
-gulp.task('default', ['all']);
+gulp.task('default', ['version', 'all']);
 
-gulp.task('clean', function (cb) {
+gulp.task('version', function (cb) {
+    tsc.version(function (err, data) {
+        if (err) throw err;
+        currentVersion = data;
+        cb();
+    });
+});
+
+gulp.task('clean', ['version'], function (cb) {
     del([
         'build',
         'src-inplace/**/*.js',
@@ -77,7 +87,9 @@ gulp.task('test5', ['clean'], function () {
   return gulp.src('src-broken/error.ts')
     .pipe(typescript()).on('error', ignore)
     .pipe(gulp.dest('build/test5'))
-    .pipe(expect([]));
+    .pipe(currentVersion !== '1.5.0-alpha'
+          ? expect([]) : expect(['build/test5/error.js'])
+         );
 });
 
 // Compiling warns some errors but outputs a file
@@ -185,7 +197,9 @@ gulp.task('test15', ['clean'], function () {
   return gulp.src('src-broken/error.ts')
     .pipe(typescript({ emitError: false }))
     .pipe(gulp.dest('build/test15'))
-    .pipe(expect([]));
+    .pipe(currentVersion !== '1.5.0-alpha'
+          ? expect([]) : expect(['build/test15/error.js'])
+         );
 });
 
 // Compile two project in one task
@@ -226,9 +240,10 @@ gulp.task('test17', ['clean'], function () {
     .pipe(gulp.dest('build/test17/s2'));
 
   return es.merge(one, two)
-    .pipe(expect([
-      'build/test17/s2/b.js'
-    ]))
+    .pipe(currentVersion !== '1.5.0-alpha'
+          ? expect(['build/test17/s2/b.js'])
+          : expect(['build/test17/s1/error.js', 'build/test17/s2/b.js'])
+         )
     .on('end', function () {
       if (glob.sync('gulp-tsc-tmp-*').length > 0) {
         throw "Temporary directory is left behind";
