@@ -50,6 +50,42 @@ describe('tsc', function () {
     ret.should.equal('return value');
   });
 
+  it('returns the version of tsc command 3 parts', function (done) {
+    execStub.callsArgWith(2, null, 'Version 12.34.56\n', '');
+    execStub.returns('return value');
+
+    var ret = tsc.version(function (err, version) {
+      if (err) return done(err);
+      version.should.equal('12.34.56');
+
+      execStub.calledOnce.should.be.true;
+
+      var command = execStub.args[0][0];
+      command.should.match(/^.+?tsc(\.cmd|\.exe)?"? -v$/i);
+
+      done();
+    });
+    ret.should.equal('return value');
+  });
+
+  it('returns the version of tsc command 1.5.0 alpha', function (done) {
+    execStub.callsArgWith(2, null, 'message TS6029: Version 1.5.0-alpha\n', '');
+    execStub.returns('return value');
+
+    var ret = tsc.version(function (err, version) {
+      if (err) return done(err);
+      version.should.equal('1.5.0-alpha');
+
+      execStub.calledOnce.should.be.true;
+
+      var command = execStub.args[0][0];
+      command.should.match(/^.+?tsc(\.cmd|\.exe)?"? -v$/i);
+
+      done();
+    });
+    ret.should.equal('return value');
+  });
+
   it('finds the tsc command location', function () {
     tsc.find().should.match(/tsc(\.cmd|\.exe)?$/i);
   });
