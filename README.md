@@ -22,7 +22,7 @@ gulp.task('compile', function(){
 ```
 
 ## Supported TSC versions
-All versions starting from 0.9.1, up to 1.5.0 Alpha.
+All versions starting from 0.9.1, up to 1.5.0 Beta.
 
 ## API
 
@@ -177,7 +177,7 @@ Generated `.js.map` file is also piped into the stream.
 Type: `Boolean`
 Default: `false`
 
-`--suppressImplicitAnyIndexErrors` option for `tsc` command.
+`--suppressImplicitAnyIndexErrors` option for `tsc` command. (version 1.5 only)
 
 Suppress noImplicitAny errors for indexing objects lacking index signatures.
 
