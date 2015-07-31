@@ -16,11 +16,8 @@ var abort  = function (err) { throw err; };
 var ignore = function (err) { };
 var currentVersion = 'INVALID';
 
-var isVersion150 = function (version) {
-    var result = version === '1.5.0-alpha' 
-        || version === '1.5.0-beta' 
-        || version === '1.5.0';
-    return result;
+var isVersionGte150 = function (version) {
+    return version.indexOf('1.5.') === 0;
 }
 
 gulp.task('default', ['version', 'all']);
@@ -94,7 +91,7 @@ gulp.task('test5', ['clean'], function () {
   return gulp.src('src-broken/error.ts')
     .pipe(typescript()).on('error', ignore)
     .pipe(gulp.dest('build/test5'))
-    .pipe(!isVersion150(currentVersion)
+    .pipe(!isVersionGte150(currentVersion)
           ? expect([]) : expect(['build/test5/error.js'])
          );
 });
@@ -204,7 +201,7 @@ gulp.task('test15', ['clean'], function () {
   return gulp.src('src-broken/error.ts')
     .pipe(typescript({ emitError: false }))
     .pipe(gulp.dest('build/test15'))
-    .pipe(!isVersion150(currentVersion)
+    .pipe(!isVersionGte150(currentVersion)
           ? expect([]) : expect(['build/test15/error.js'])
          );
 });
@@ -247,7 +244,7 @@ gulp.task('test17', ['clean'], function () {
     .pipe(gulp.dest('build/test17/s2'));
 
   return es.merge(one, two)
-    .pipe(!isVersion150(currentVersion)
+    .pipe(!isVersionGte150(currentVersion)
           ? expect(['build/test17/s2/b.js'])
           : expect(['build/test17/s1/error.js', 'build/test17/s2/b.js'])
          )
