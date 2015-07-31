@@ -280,6 +280,14 @@ By default, gulp-tsc ignores warnings from tsc command and emits compiled js fil
 
 If set this option to true, gulp-tsc never emits compiled files when tsc command returned warnings or errors.
 
+#### options.emitDecoratorMetadata
+Type: `Boolean`
+Default: `false`
+
+`--emitDecoratorMetadata` option for `tsc` command.
+
+Emit decorator metadata.
+
 ## Error handling
 
 If gulp-tsc fails to compile files, it emits `error` event with `gutil.PluginError` as the manner of gulp plugins.
