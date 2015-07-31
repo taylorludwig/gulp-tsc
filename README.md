@@ -63,8 +63,10 @@ If set to true, this plugin emits `error` event on compilation failure, which ca
 See [Error handling](#error-handling) for details.
 
 #### options.module
-Type: `String` (`"commonjs"` or `"amd"`)
+Type: `String` (`"commonjs"`, `"amd"`, `"system"` or `"umd"`)
 Default: `null` (if `options.target` is `"ES6"`), or `"commonjs"` (otherwise)
+
+The `"system"` and `"umd"` module options available only when using TypeScript 1.5
 
 `--module` option for `tsc` command.
 
