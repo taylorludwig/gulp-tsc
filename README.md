@@ -290,6 +290,15 @@ Default: `false`
 
 Emit decorator metadata.
 
+
+#### options.experimentalDecorators
+Type: `Boolean`
+Default: `false`
+
+`--experimentalDecorators` option for `tsc` command.
+
+Enable experimental Decorator support.
+
 ## Error handling
 
 If gulp-tsc fails to compile files, it emits `error` event with `gutil.PluginError` as the manner of gulp plugins.
