@@ -300,17 +300,17 @@ Default: `false`
 Enable experimental Decorator support.
 
 #### options.additionalTscParameters
-Type: String
-Default: null
+Type: Array of string
+Default: []
 
-This option is used to pass any parameter to tsc command. Especially it can be used to pass parameters not yet suported by gulp-tsc. 
+This option is used to pass any parameter to tsc command. Especially it can be used to pass parameters not yet suported by gulp-tsc. You have to pass each parameter separately.
 
 Example:
 ```
 gulp.task('compile', function(){
   gulp.src(['src/**/*.tsx'])
     .pipe(typescript({
-      additionalTscParameters: '--jsx react'
+      additionalTscParameters: ['--jsx', 'react']
     }))
     .pipe(gulp.dest('build/'))
 });
