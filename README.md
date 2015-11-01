@@ -179,7 +179,7 @@ Generated `.js.map` file is also piped into the stream.
 Type: `Boolean`
 Default: `false`
 
-`--suppressImplicitAnyIndexErrors` option for `tsc` command. (version 1.5 only)
+`--suppressImplicitAnyIndexErrors` option for `tsc` command. (Starting from TSC version 1.5)
 
 Suppress noImplicitAny errors for indexing objects lacking index signatures.
 
@@ -297,7 +297,16 @@ Default: `false`
 
 `--experimentalDecorators` option for `tsc` command.
 
-Enable experimental Decorator support.
+Enable experimental Decorator support. (Starting from TSC version 1.5)
+
+
+#### options.jsx
+Type: `String`
+Default: `null`
+
+`--jsx` option for `tsc` command.
+
+Enable React support. (Starting from TSC version 1.6)
 
 #### options.additionalTscParameters
 Type: Array of string
