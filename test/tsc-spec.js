@@ -34,6 +34,16 @@ describe('tsc', function () {
   });
 
   it('returns the version of tsc command', function (done) {
+    var parser = tsc.versionParser(function (err, version) {
+      if (err) return done(err);
+      version.should.equal('1.6.2');
+
+      done();
+    });
+    parser("message TS6029: Version 1.6.2", "");
+  });
+  
+  it('returns the version of tsc 1.6 command', function (done) {
     execStub.callsArgWith(2, null, 'Version 12.34.56.78\n', '');
     execStub.returns('return value');
 
